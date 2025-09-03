@@ -1,16 +1,17 @@
 device--width
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jadwal Piket Kelas 12</title>
-
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-
+  
   <style>
     body {
       background-color: #f8f9fa;
@@ -276,7 +277,7 @@ device--width
       <p>© 2023 Kelas 12 PPGL - SMK Insan Cemerlang</p>
     </div>
   </div>
-
+  
   <!-- Modal untuk Form Tambah dan Edit -->
   <div class="modal fade" id="modalPiket" tabindex="-1" aria-labelledby="modalPiketLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -317,10 +318,10 @@ device--width
       </div>
     </div>
   </div>
-
+  
   <script type="module">
-    import { 
-      initializeApp 
+    import {
+      initializeApp
     } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js'
     
     import {
@@ -335,7 +336,7 @@ device--width
       query,
       orderBy
     } from 'https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js'
-
+    
     const firebaseConfig = {
       apiKey: "AIzaSyCfqZD7UZZt-GWmtNhfJyksrv3-8ENRjto",
       authDomain: "insan-cemerlang-d5574.firebaseapp.com",
@@ -345,7 +346,7 @@ device--width
       appId: "1:1035937160050:web:6d77d3874c3f78b2811beb",
       measurementId: "G-EVVQ80Q08C"
     };
-
+    
     // Inisialisasi firebase
     const aplikasi = initializeApp(firebaseConfig)
     const basisdata = getFirestore(aplikasi)
@@ -396,7 +397,7 @@ device--width
         const refDokumen = collection(basisdata, "piket");
         const kueri = query(refDokumen, orderBy("hari"));
         const cuplikanKueri = await getDocs(kueri);
-
+        
         let hasilKueri = [];
         cuplikanKueri.forEach((dokumen) => {
           hasilKueri.push({
@@ -406,7 +407,7 @@ device--width
             catatan: dokumen.data().catatan
           })
         })
-
+        
         return hasilKueri;
       } catch (e) {
         console.log("Gagal mengambil data piket: " + e)
@@ -608,4 +609,5 @@ device--width
     }
   </script>
 </body>
+
 </html>
